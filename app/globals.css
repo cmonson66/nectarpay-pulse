@@ -1,0 +1,301 @@
+/* NectarPay AZ Pulse — honey & navy, straight from the Playbook's identity.
+   Phone-first: owners open these behind the counter. */
+
+:root {
+  --navy: #0c1a2c;
+  --navy-2: #13263d;
+  --honey: #f2a71b;
+  --honey-deep: #c9820a;
+  --cream: #f8f4ea;
+  --cream-2: #efe8d8;
+  --ink: #0c1a2c;
+  --ink-soft: #47566b;
+  --loss: #c8442c;
+  --keep: #1f8a5b;
+  --radius: 14px;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--navy);
+  color: var(--cream);
+  font-family: var(--font-body), system-ui, sans-serif;
+  line-height: 1.55;
+}
+
+/* Honeycomb whisper on the navy field — the Playbook cover, abstracted */
+.wrap {
+  min-height: 100dvh;
+  background-image: radial-gradient(
+      ellipse 90% 40% at 70% -5%,
+      rgba(242, 167, 27, 0.14),
+      transparent 60%
+    ),
+    url("data:image/svg+xml,%3Csvg width='56' height='97' viewBox='0 0 56 97' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%23f2a71b' stroke-opacity='0.05'%3E%3Cpath d='M28 0l28 16v32L28 64 0 48V16z'/%3E%3Cpath d='M28 64l28 16v17H0V80z'/%3E%3C/g%3E%3C/svg%3E");
+  padding: 0 0 40px;
+}
+
+/* ---------------- HERO ---------------- */
+.hero {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 56px 22px 34px;
+}
+.eyebrow {
+  font-family: var(--font-display), sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--honey);
+  margin: 0 0 10px;
+}
+.display {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 800;
+  font-size: clamp(34px, 8.5vw, 56px);
+  line-height: 1.04;
+  margin: 0 0 16px;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+.sub {
+  font-size: 17px;
+  color: rgba(248, 244, 234, 0.86);
+  margin: 0 0 22px;
+  max-width: 54ch;
+}
+
+.intentRow { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  font-family: var(--font-display), sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  padding: 10px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(242, 167, 27, 0.45);
+  background: rgba(242, 167, 27, 0.08);
+  color: var(--cream);
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+  min-height: 44px;
+}
+.chip:active { transform: scale(0.97); }
+.chipOn {
+  background: var(--honey);
+  border-color: var(--honey);
+  color: var(--navy);
+  font-weight: 700;
+}
+.chipEcho {
+  margin: 12px 0 0;
+  font-size: 13px;
+  color: rgba(242, 167, 27, 0.9);
+}
+
+/* ---------------- CARDS ---------------- */
+.card {
+  background: var(--cream);
+  color: var(--ink);
+  border-radius: var(--radius);
+  padding: 24px 22px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+}
+.napkin { max-width: 640px; margin: 8px auto 0; }
+.cardKicker {
+  font-family: var(--font-display), sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--honey-deep);
+  margin: 0 0 6px;
+}
+.cardTitle {
+  font-family: var(--font-display), sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  margin: 0 0 18px;
+}
+
+.bigMoney { display: flex; align-items: baseline; gap: 10px; margin-bottom: 8px; }
+.bigNum {
+  font-family: var(--font-display), sans-serif;
+  font-variant-numeric: tabular-nums;
+  font-size: clamp(34px, 9vw, 46px);
+  font-weight: 800;
+  color: var(--ink);
+}
+.bigLabel { font-size: 14px; color: var(--ink-soft); }
+
+/* The signature control: honey in the groove */
+.slider {
+  width: 100%;
+  appearance: none;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--cream-2);
+  outline-offset: 4px;
+  margin: 8px 0 6px;
+}
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--honey);
+  border: 3px solid var(--navy);
+  cursor: grab;
+  box-shadow: 0 2px 10px rgba(201, 130, 10, 0.5);
+}
+.slider::-moz-range-thumb {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--honey);
+  border: 3px solid var(--navy);
+  cursor: grab;
+}
+
+.meter {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--cream-2);
+  overflow: hidden;
+  margin: 2px 0 18px;
+}
+.meterFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--honey), var(--loss));
+  transition: width 0.25s ease;
+}
+
+.mathRows { display: grid; gap: 10px; }
+.mathRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  font-size: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed rgba(12, 26, 44, 0.15);
+}
+.mathRow strong {
+  font-family: var(--font-display), sans-serif;
+  font-variant-numeric: tabular-nums;
+  font-size: 18px;
+}
+.mathRow.loss strong { color: var(--loss); }
+.mathRow.keep { border-bottom: none; }
+.mathRow.keep strong { color: var(--keep); font-size: 24px; }
+.fine { font-size: 12px; color: var(--ink-soft); margin: 14px 0 0; }
+
+/* ---------------- DENSITY ---------------- */
+.density {
+  max-width: 640px;
+  margin: 26px auto 0;
+  padding: 0 22px;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+.densityNum {
+  font-family: var(--font-display), sans-serif;
+  font-size: 44px;
+  font-weight: 800;
+  color: var(--honey);
+  line-height: 1;
+}
+.densityText { font-size: 14px; color: rgba(248, 244, 234, 0.85); max-width: 40ch; }
+
+/* ---------------- EXITS ---------------- */
+.exits {
+  max-width: 640px;
+  margin: 26px auto 0;
+  padding: 0 22px;
+  display: grid;
+  gap: 14px;
+}
+.exit { padding: 20px; }
+.exitTitle {
+  font-family: var(--font-display), sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  margin: 0 0 4px;
+}
+.exitSub { font-size: 14px; color: var(--ink-soft); margin: 0 0 14px; }
+.dayRow, .textRow { display: flex; gap: 8px; flex-wrap: wrap; }
+.dayBtn {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 12px 16px;
+  min-height: 46px;
+  border-radius: 10px;
+  border: none;
+  background: var(--navy);
+  color: var(--honey);
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+.dayBtn:active { transform: scale(0.97); }
+.phoneInput {
+  flex: 1;
+  min-width: 150px;
+  font-size: 16px;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1.5px solid rgba(12, 26, 44, 0.25);
+  background: #fff;
+  color: var(--ink);
+}
+.phoneInput:focus { outline: 2px solid var(--honey); border-color: var(--honey); }
+.done { font-size: 14px; color: var(--keep); font-weight: 600; margin: 0; }
+
+.exitQuiet { text-align: center; padding: 6px 0 0; font-size: 13px; color: rgba(248, 244, 234, 0.6); }
+.quietLink {
+  background: none;
+  border: none;
+  color: rgba(248, 244, 234, 0.6);
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 13px;
+  padding: 8px 6px;
+}
+.quietLink:hover { color: var(--cream); }
+
+/* ---------------- FOOTER / LANDING ---------------- */
+.foot {
+  max-width: 640px;
+  margin: 40px auto 0;
+  padding: 18px 22px 0;
+  border-top: 1px solid rgba(242, 167, 27, 0.2);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 12px;
+  color: rgba(248, 244, 234, 0.6);
+}
+.footBrand { font-family: var(--font-display), sans-serif; font-weight: 800; color: var(--cream); }
+.footAccent { color: var(--honey); }
+
+.landingClaims {
+  max-width: 640px;
+  margin: 10px auto 0;
+  padding: 0 22px;
+  display: grid;
+  gap: 12px;
+}
+.claim { padding: 18px 20px; }
+.claimTitle {
+  font-family: var(--font-display), sans-serif;
+  font-weight: 800;
+  font-size: 16px;
+  margin: 0 0 4px;
+}
+.claimBody { font-size: 14px; color: var(--ink-soft); margin: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
