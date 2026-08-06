@@ -16,6 +16,7 @@ type Props = {
   pain: string;
   nearby: number;
   initialVolume: number;
+  initialCrypto: number;
   emailIntent: string | null;
 };
 
@@ -41,6 +42,8 @@ const money = (n: number) =>
 export function PulseClient(props: Props) {
   const { token } = props;
   const [volume, setVolume] = useState(props.initialVolume);
+  const [crypto, setCrypto] = useState(props.initialCrypto);
+  const [cryptoMode, setCryptoMode] = useState<'shift' | 'new'>('shift');
   const [tappedIntent, setTappedIntent] = useState<string | null>(null);
   const [visitDay, setVisitDay] = useState<string | null>(null);
   const [visitDone, setVisitDone] = useState(false);
@@ -49,8 +52,13 @@ export function PulseClient(props: Props) {
   const [optedOut, setOptedOut] = useState(false);
   const [confirmOptOut, setConfirmOptOut] = useState(false);
   const sliderLogged = useRef<number | null>(null);
+  const cryptoLogged = useRef<string | null>(null);
 
   const yearlyFees = useMemo(() => volume * 12 * CARD_RATE, [volume]);
+  // Crypto mix: in 'shift' mode the crypto slice can't exceed card volume
+  const cryptoClamped = cryptoMode === 'shift' ? Math.min(crypto, volume) : crypto;
+  const cryptoFeesYr = cryptoClamped * 12 * CARD_RATE;
+  const cryptoRevenueYr = cryptoClamped * 12;
   const kept = Math.max(0, yearlyFees - YEAR_ONE);
   const feePct = Math.min(100, (yearlyFees / (yearlyFees + 1) > 0 ? (yearlyFees / 6000) * 100 : 0));
 
@@ -58,6 +66,13 @@ export function PulseClient(props: Props) {
     if (sliderLogged.current === volume) return;
     sliderLogged.current = volume;
     logEvent(token, 'slider', { valueNum: volume });
+  };
+
+  const commitCrypto = () => {
+    const key = `${cryptoMode}:${cryptoClamped}`;
+    if (cryptoLogged.current === key) return;
+    cryptoLogged.current = key;
+    logEvent(token, 'slider', { valueNum: cryptoClamped, valueText: `crypto:${cryptoMode}` });
   };
 
   const tapIntent = (key: string) => {
@@ -175,6 +190,90 @@ export function PulseClient(props: Props) {
           *If your crypto-paying customers cover volume like this. Cards keep working
           exactly as they do now — this is the no-fee lane beside them. 0% processing
           on crypto, money settles to your own wallet in seconds, no chargebacks.
+        </p>
+
+        {/* ---------------- CRYPTO MIX ---------------- */}
+        <div className="mixDivider" />
+        <p className="cardKicker">Your crypto mix</p>
+        <h2 className="cardTitle">Now say some of it is crypto</h2>
+
+        <div className="modeRow" role="group" aria-label="How the crypto sales arrive">
+          <button
+            type="button"
+            className={`modeBtn ${cryptoMode === 'shift' ? 'modeOn' : ''}`}
+            onClick={() => setCryptoMode('shift')}
+          >
+            Moved off cards
+          </button>
+          <button
+            type="button"
+            className={`modeBtn ${cryptoMode === 'new' ? 'modeOn' : ''}`}
+            onClick={() => setCryptoMode('new')}
+          >
+            New crypto customers
+          </button>
+        </div>
+
+        <div className="bigMoney" aria-live="polite">
+          <span className="bigNum">{money(cryptoClamped)}</span>
+          <span className="bigLabel">
+            / month in crypto{cryptoMode === 'shift' ? ' (instead of cards)' : ' (on top of cards)'}
+          </span>
+        </div>
+
+        <input
+          className="slider"
+          type="range"
+          min={0}
+          max={cryptoMode === 'shift' ? Math.max(1000, volume) : 30000}
+          step={500}
+          value={cryptoClamped}
+          aria-label="Monthly crypto sales"
+          onChange={(e) => setCrypto(Number(e.target.value))}
+          onPointerUp={commitCrypto}
+          onKeyUp={commitCrypto}
+          onTouchEnd={commitCrypto}
+        />
+
+        {cryptoMode === 'shift' ? (
+          <div className="mathRows">
+            <div className="mathRow">
+              <span>Card fees skipped on that slice / yr</span>
+              <strong className="posGreen">+{money(cryptoFeesYr)}</strong>
+            </div>
+            <div className="mathRow">
+              <span>NectarPay, year one — all in</span>
+              <strong>−{money(YEAR_ONE)}</strong>
+            </div>
+            <div className="mathRow keep">
+              <span>Ahead in year one{cryptoFeesYr < YEAR_ONE ? '*' : ''}</span>
+              <strong>{cryptoFeesYr - YEAR_ONE >= 0 ? '+' : '−'}{money(Math.abs(cryptoFeesYr - YEAR_ONE))}</strong>
+            </div>
+            <div className="mathRow">
+              <span>Every year after, at this mix</span>
+              <strong className="posGreen">+{money(Math.max(0, cryptoFeesYr - ONGOING))}</strong>
+            </div>
+          </div>
+        ) : (
+          <div className="mathRows">
+            <div className="mathRow keep">
+              <span>New revenue / yr</span>
+              <strong>+{money(cryptoRevenueYr)}</strong>
+            </div>
+            <div className="mathRow">
+              <span>Processing fees on it</span>
+              <strong className="posGreen">$0 — ever</strong>
+            </div>
+            <div className="mathRow">
+              <span>Fees you&rsquo;d have eaten if these were card sales</span>
+              <strong className="posGreen">{money(cryptoFeesYr)} kept</strong>
+            </div>
+          </div>
+        )}
+        <p className="fine">
+          {cryptoMode === 'shift'
+            ? 'Every dollar a customer pays in crypto instead of a card skips the processing fee entirely.'
+            : 'Crypto holders pick the shops that take it — every one of these sales settles to your wallet whole, in seconds.'}
         </p>
       </section>
 

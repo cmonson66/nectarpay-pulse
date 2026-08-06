@@ -190,6 +190,28 @@ body {
 .mathRow.keep strong { color: var(--keep); font-size: 24px; }
 .fine { font-size: 12px; color: var(--ink-soft); margin: 14px 0 0; }
 
+.mixDivider {
+  height: 1px;
+  background: repeating-linear-gradient(90deg, rgba(12,26,44,.25) 0 6px, transparent 6px 12px);
+  margin: 24px 0 18px;
+}
+.modeRow { display: flex; gap: 8px; margin: 0 0 14px; }
+.modeBtn {
+  font-family: var(--font-display), sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 10px 14px;
+  min-height: 44px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(12, 26, 44, 0.3);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.modeOn { background: var(--navy); color: var(--honey); border-color: var(--navy); }
+.posGreen { color: var(--keep); }
+
 /* ---------------- DENSITY ---------------- */
 .density {
   max-width: 640px;

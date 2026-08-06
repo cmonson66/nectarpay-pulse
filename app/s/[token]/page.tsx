@@ -27,7 +27,7 @@ export default async function PulsePage({
   const { data: lead } = await supabase
     .from('nectarpay_leads')
     .select(
-      'place_id, pulse_token, name, city, vertical, band, status, phone, owner_first_name, latitude, longitude, self_reported_monthly_volume'
+      'place_id, pulse_token, name, city, vertical, band, status, phone, owner_first_name, latitude, longitude, self_reported_monthly_volume, self_reported_crypto_volume'
     )
     .eq('pulse_token', token)
     .single<PulseLead>();
@@ -70,6 +70,7 @@ export default async function PulsePage({
       pain={copy.pain}
       nearby={nearby}
       initialVolume={lead.self_reported_monthly_volume ?? 10000}
+      initialCrypto={lead.self_reported_crypto_volume ?? 3000}
       emailIntent={intent ?? null}
     />
   );

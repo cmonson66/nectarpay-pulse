@@ -21,4 +21,5 @@ export type PulseLead = {
   latitude: number | null;
   longitude: number | null;
   self_reported_monthly_volume: number | null;
+  self_reported_crypto_volume: number | null;
 };
