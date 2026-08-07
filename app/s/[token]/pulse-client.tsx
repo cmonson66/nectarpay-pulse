@@ -46,6 +46,7 @@ export function PulseClient(props: Props) {
   const [cryptoMode, setCryptoMode] = useState<'shift' | 'new'>('shift');
   const [tappedIntent, setTappedIntent] = useState<string | null>(null);
   const [visitDay, setVisitDay] = useState<string | null>(null);
+  const [visitTime, setVisitTime] = useState<string | null>(null);
   const [visitDone, setVisitDone] = useState(false);
   const [phone, setPhone] = useState('');
   const [textDone, setTextDone] = useState(false);
@@ -80,10 +81,12 @@ export function PulseClient(props: Props) {
     logEvent(token, 'intent', { intent: key });
   };
 
-  const requestVisit = (day: string) => {
+  const requestVisit = (day: string, time: string) => {
+    const pref = `${day} · ${time}`;
     setVisitDay(day);
+    setVisitTime(time);
     setVisitDone(true);
-    logEvent(token, 'visit_request', { valueText: day });
+    logEvent(token, 'visit_request', { valueText: pref });
   };
 
   const requestText = () => {
@@ -298,16 +301,41 @@ export function PulseClient(props: Props) {
           </p>
           {visitDone ? (
             <p className="done">
-              Locked in — Eric will text to confirm {visitDay}. Nothing else to do.
+              Locked in — Eric will text to confirm {visitDay}
+              {visitTime ? ` ${visitTime.toLowerCase()}` : ''}. Nothing else to do.
             </p>
           ) : (
-            <div className="dayRow">
-              {['Tuesday', 'Wednesday', 'Thursday'].map((d) => (
-                <button key={d} type="button" className="dayBtn" onClick={() => requestVisit(d)}>
-                  {d}
-                </button>
-              ))}
-            </div>
+            <>
+              <div className="dayRow">
+                {['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'].map((d) => (
+                  <button
+                    key={d}
+                    type="button"
+                    className={`dayBtn ${visitDay === d ? 'dayOn' : ''}`}
+                    onClick={() => setVisitDay(d)}
+                  >
+                    {d.slice(0, 3)}
+                  </button>
+                ))}
+              </div>
+              {visitDay && (
+                <>
+                  <p className="stepHint">{visitDay} — what part of the day?</p>
+                  <div className="dayRow">
+                    {['Morning', 'Afternoon', 'Evening'].map((t) => (
+                      <button
+                        key={t}
+                        type="button"
+                        className="dayBtn"
+                        onClick={() => requestVisit(visitDay, t)}
+                      >
+                        {t}
+                      </button>
+                    ))}
+                  </div>
+                </>
+              )}
+            </>
           )}
         </div>
 
