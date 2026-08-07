@@ -17,6 +17,8 @@ type Props = {
   nearby: number;
   initialVolume: number;
   initialCrypto: number;
+  repFirst: string;
+  repCell: string;
   emailIntent: string | null;
 };
 
@@ -139,7 +141,7 @@ export function PulseClient(props: Props) {
           ))}
         </div>
         {tappedIntent && (
-          <p className="chipEcho">Noted — Eric leads with that if you two ever talk.</p>
+          <p className="chipEcho">Noted — {props.repFirst} leads with that if you two ever talk.</p>
         )}
       </section>
 
@@ -294,14 +296,14 @@ export function PulseClient(props: Props) {
       {/* ---------------- EXITS ---------------- */}
       <section className="exits">
         <div className="card exit">
-          <h3 className="exitTitle">Have Eric stop by</h3>
+          <h3 className="exitTitle">Have {props.repFirst} stop by</h3>
           <p className="exitSub">
             Ten minutes at your counter, live demo on the real terminal. Pick a day —
-            he confirms by text.
+            {props.repFirst} confirms by text.
           </p>
           {visitDone ? (
             <p className="done">
-              Locked in — Eric will text to confirm {visitDay}
+              Locked in — {props.repFirst} will text to confirm {visitDay}
               {visitTime ? ` ${visitTime.toLowerCase()}` : ''}. Nothing else to do.
             </p>
           ) : (
@@ -343,7 +345,7 @@ export function PulseClient(props: Props) {
           <h3 className="exitTitle">Text me the one-pager</h3>
           <p className="exitSub">The whole thing on one page — pricing included.</p>
           {textDone ? (
-            <p className="done">On its way from Eric (602-550-9162). Save the number.</p>
+            <p className="done">On its way from {props.repFirst} ({props.repCell}). Save the number.</p>
           ) : (
             <div className="textRow">
               <input
@@ -385,7 +387,7 @@ export function PulseClient(props: Props) {
         <span className="footBrand">
           Nectar<span className="footAccent">Pay</span> · Arizona
         </span>
-        <span>Eric · NectarPay Ambassador, Phoenix</span>
+        <span>{props.repFirst} · NectarPay Ambassador, Phoenix</span>
       </footer>
     </main>
   );
