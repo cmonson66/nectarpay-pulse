@@ -22,4 +22,5 @@ export type PulseLead = {
   longitude: number | null;
   self_reported_monthly_volume: number | null;
   self_reported_crypto_volume: number | null;
+  crypto_native: boolean | null;
 };

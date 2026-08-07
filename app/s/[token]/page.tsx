@@ -27,7 +27,7 @@ export default async function PulsePage({
   const { data: lead } = await supabase
     .from('nectarpay_leads')
     .select(
-      'place_id, pulse_token, name, city, vertical, band, status, phone, owner_first_name, latitude, longitude, self_reported_monthly_volume, self_reported_crypto_volume'
+      'place_id, pulse_token, name, city, vertical, band, status, phone, owner_first_name, latitude, longitude, self_reported_monthly_volume, self_reported_crypto_volume, crypto_native'
     )
     .eq('pulse_token', token)
     .single<PulseLead>();
@@ -56,7 +56,7 @@ export default async function PulsePage({
     nearby = Math.max(0, (count ?? 1) - 1);
   }
 
-  const cluster = clusterFor(lead.vertical);
+  const cluster = clusterFor(lead.crypto_native ? 'crypto-native' : lead.vertical);
   const copy = CLUSTER_COPY[cluster];
   const city = lead.city?.replace(/\s+AZ$/, '') ?? 'Arizona';
 

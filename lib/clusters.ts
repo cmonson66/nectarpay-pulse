@@ -1,5 +1,5 @@
 // Vertical -> story cluster. Copy the emails and the Pulse page share.
-export type Cluster = 'control' | 'math' | 'crowd' | 'simple';
+export type Cluster = 'control' | 'math' | 'crowd' | 'simple' | 'native';
 
 const MAP: Record<string, Cluster> = {
   'smoke-vape': 'control',
@@ -25,6 +25,7 @@ const MAP: Record<string, Cluster> = {
   'nail-beauty': 'crowd',
   'gaming': 'crowd',
   'thrift-vintage': 'crowd',
+  'crypto-native': 'native',
 };
 
 export function clusterFor(vertical: string): Cluster {
@@ -32,6 +33,10 @@ export function clusterFor(vertical: string): Cluster {
 }
 
 export const CLUSTER_COPY: Record<Cluster, { sub: string; pain: string }> = {
+  native: {
+    sub: 'You already take crypto \u2014 you did the homework before the block did. This is the cleaner rail.',
+    pain: 'Zero-fee processing, instant settlement to a wallet you control \u2014 and an early spot on the merchant map crypto holders will use to find you.',
+  },
   control: {
     sub: 'Processors treat your industry like a problem. This terminal can\u2019t fire you, freeze you, or reverse you.',
     pain: 'Money lands in your own wallet the second the customer pays \u2014 nobody sits in the middle.',
