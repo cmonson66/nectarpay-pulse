@@ -298,7 +298,7 @@ export function PulseClient(props: Props) {
         <div className="card exit">
           <h3 className="exitTitle">Have {props.repFirst} stop by</h3>
           <p className="exitSub">
-            Ten minutes at your counter, live demo on the real terminal. Pick a day —
+            Ten minutes at your shop, live demo on the real terminal. Pick a day —
             {props.repFirst} confirms by text.
           </p>
           {visitDone ? (

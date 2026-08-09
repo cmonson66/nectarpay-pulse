@@ -7,7 +7,7 @@ export default function Landing() {
           Card fees take 3%.<br />This lane takes zero.
         </h1>
         <p className="sub">
-          NectarPay is a counter terminal that lets your shop accept crypto payments
+          NectarPay is a terminal by your register that lets your shop accept crypto payments
           with no processing fee — money settles to your own wallet the second the
           customer pays. Your card reader keeps doing its job; this is the no-fee lane
           beside it.
