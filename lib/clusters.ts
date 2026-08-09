@@ -46,7 +46,7 @@ export const CLUSTER_COPY: Record<Cluster, { sub: string; pain: string }> = {
     pain: 'A 3% fee on a $4,000 sale is $120 gone \u2014 and a delivered sale can still be reversed weeks later. Not on this lane.',
   },
   crowd: {
-    sub: '\u201CDo you take crypto?\u201D is already being asked at counters like yours. Be the first on the block that says yes.',
+    sub: '\u201CDo you take crypto?\u201D is already being asked at shops like yours. Be the first on the block that says yes.',
     pain: 'Your customers skew young \u2014 the exact crowd that holds crypto and picks shops that take it.',
   },
   simple: {
