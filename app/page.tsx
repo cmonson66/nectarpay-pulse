@@ -18,7 +18,7 @@ export default function Landing() {
         <div className="card claim">
           <h2 className="claimTitle">Zero processing on crypto</h2>
           <p className="claimBody">
-            $499 once for the terminal, then $19.99 a month for each handheld scanner. No percentage of your sales - ever.
+            $499 once for the terminal, then $19 a month for the membership. No percentage of your sales - ever.
           </p>
         </div>
         <div className="card claim">
