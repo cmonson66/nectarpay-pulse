@@ -34,7 +34,7 @@ async function logEvent(
       body: JSON.stringify({ token, event, ...extra }),
     });
   } catch {
-    // Best-effort — the page never breaks over telemetry
+    // Best-effort - the page never breaks over telemetry
   }
 }
 
@@ -110,7 +110,7 @@ export function PulseClient(props: Props) {
           <p className="eyebrow">NectarPay · Arizona</p>
           <h1 className="display">Understood.</h1>
           <p className="sub">
-            {props.businessName} is off our list — no more emails, no visits. If the
+            {props.businessName} is off our list - no more emails, no visits. If the
             payments world ever changes on you, you know where we are.
           </p>
         </section>
@@ -125,9 +125,20 @@ export function PulseClient(props: Props) {
         <p className="eyebrow">Built for</p>
         <h1 className="display">{props.businessName}</h1>
         <p className="sub">
-          {props.ownerFirst ? `${props.ownerFirst} — ` : ''}
+          {props.ownerFirst ? `${props.ownerFirst}, ` : ''}
           {props.sub}
         </p>
+        {/* The thing itself. A merchant who has never seen one pictures a
+            card reader; this answers that before the math starts. */}
+        <div className="shot">
+          <img
+            src="/NPterminal.png"
+            alt="The NectarPay terminal by the register, showing a scan-to-pay code"
+            width={252}
+            height={222}
+          />
+          <p className="shotCap">Tap, scan, or insert. The money lands in your wallet.</p>
+        </div>
         <div className="intentRow" role="group" aria-label="What's hitting home?">
           {Object.entries(INTENT_LABELS).map(([key, label]) => (
             <button
@@ -141,7 +152,7 @@ export function PulseClient(props: Props) {
           ))}
         </div>
         {tappedIntent && (
-          <p className="chipEcho">Noted — {props.repFirst} leads with that if you two ever talk.</p>
+          <p className="chipEcho">Noted - {props.repFirst} leads with that if you two ever talk.</p>
         )}
       </section>
 
@@ -179,7 +190,7 @@ export function PulseClient(props: Props) {
             <strong>−{money(yearlyFees)}</strong>
           </div>
           <div className="mathRow">
-            <span>NectarPay, year one — all in</span>
+            <span>NectarPay, year one - all in</span>
             <strong>{money(YEAR_ONE)}</strong>
           </div>
           <div className="mathRow">
@@ -193,7 +204,7 @@ export function PulseClient(props: Props) {
         </div>
         <p className="fine">
           *If your crypto-paying customers cover volume like this. Cards keep working
-          exactly as they do now — this is the no-fee lane beside them. 0% processing
+          exactly as they do now - this is the no-fee lane beside them. 0% processing
           on crypto, money settles to your own wallet in seconds, no chargebacks.
         </p>
 
@@ -247,7 +258,7 @@ export function PulseClient(props: Props) {
               <strong className="posGreen">+{money(cryptoFeesYr)}</strong>
             </div>
             <div className="mathRow">
-              <span>NectarPay, year one — all in</span>
+              <span>NectarPay, year one - all in</span>
               <strong>−{money(YEAR_ONE)}</strong>
             </div>
             <div className="mathRow keep">
@@ -267,7 +278,7 @@ export function PulseClient(props: Props) {
             </div>
             <div className="mathRow">
               <span>Processing fees on it</span>
-              <strong className="posGreen">$0 — ever</strong>
+              <strong className="posGreen">$0 - ever</strong>
             </div>
             <div className="mathRow">
               <span>Fees you&rsquo;d have eaten if these were card sales</span>
@@ -278,7 +289,7 @@ export function PulseClient(props: Props) {
         <p className="fine">
           {cryptoMode === 'shift'
             ? 'Every dollar a customer pays in crypto instead of a card skips the processing fee entirely.'
-            : 'Crypto holders pick the shops that take it — every one of these sales settles to your wallet whole, in seconds.'}
+            : 'Crypto holders pick the shops that take it - every one of these sales settles to your wallet whole, in seconds.'}
         </p>
       </section>
 
@@ -298,12 +309,12 @@ export function PulseClient(props: Props) {
         <div className="card exit">
           <h3 className="exitTitle">Have {props.repFirst} stop by</h3>
           <p className="exitSub">
-            Ten minutes at your shop, live demo on the real terminal. Pick a day —
+            Ten minutes at your shop, live demo on the real terminal. Pick a day -
             {props.repFirst} confirms by text.
           </p>
           {visitDone ? (
             <p className="done">
-              Locked in — {props.repFirst} will text to confirm {visitDay}
+              Locked in - {props.repFirst} will text to confirm {visitDay}
               {visitTime ? ` ${visitTime.toLowerCase()}` : ''}. Nothing else to do.
             </p>
           ) : (
@@ -322,7 +333,7 @@ export function PulseClient(props: Props) {
               </div>
               {visitDay && (
                 <>
-                  <p className="stepHint">{visitDay} — what part of the day?</p>
+                  <p className="stepHint">{visitDay} - what part of the day?</p>
                   <div className="dayRow">
                     {['Morning', 'Afternoon', 'Evening'].map((t) => (
                       <button
@@ -343,7 +354,7 @@ export function PulseClient(props: Props) {
 
         <div className="card exit">
           <h3 className="exitTitle">Text me the one-pager</h3>
-          <p className="exitSub">The whole thing on one page — pricing included.</p>
+          <p className="exitSub">The whole thing on one page - pricing included.</p>
           {textDone ? (
             <p className="done">On its way from {props.repFirst} ({props.repCell}). Save the number.</p>
           ) : (
@@ -369,7 +380,7 @@ export function PulseClient(props: Props) {
             <span>
               Sure?{' '}
               <button type="button" className="quietLink" onClick={optOut}>
-                Yes — take us off the list
+                Yes - take us off the list
               </button>{' '}
               <button type="button" className="quietLink" onClick={() => setConfirmOptOut(false)}>
                 No, keep us on
@@ -377,7 +388,7 @@ export function PulseClient(props: Props) {
             </span>
           ) : (
             <button type="button" className="quietLink" onClick={() => setConfirmOptOut(true)}>
-              Not for us — stop emailing
+              Not for us - stop emailing
             </button>
           )}
         </div>

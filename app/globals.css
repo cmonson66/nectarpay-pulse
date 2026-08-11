@@ -67,6 +67,25 @@ body {
   max-width: 54ch;
 }
 
+/* Terminal photo in the hero. Capped so it never dominates a phone screen,
+   and the caption carries the one-line explanation. */
+.shot {
+  margin: 0 0 22px;
+}
+.shot img {
+  display: block;
+  width: 100%;
+  max-width: 252px;
+  height: auto;
+  border-radius: 14px;
+  border: 1px solid rgba(248, 244, 234, 0.1);
+}
+.shotCap {
+  font-size: 13px;
+  color: rgba(248, 244, 234, 0.6);
+  margin: 9px 0 0;
+}
+
 .intentRow { display: flex; flex-wrap: wrap; gap: 8px; }
 .chip {
   font-family: var(--font-display), sans-serif;

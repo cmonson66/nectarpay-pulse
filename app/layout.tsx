@@ -6,7 +6,7 @@ const sora = Sora({ subsets: ['latin'], variable: '--font-display', weight: ['60
 const inter = Inter({ subsets: ['latin'], variable: '--font-body' });
 
 export const metadata: Metadata = {
-  title: 'NectarPay Arizona — accept crypto, keep the fees',
+  title: 'NectarPay Arizona - accept crypto, keep the fees',
   description:
     'Zero-fee crypto payments for Arizona businesses. Money settles to your own wallet in seconds. No chargebacks.',
 };
