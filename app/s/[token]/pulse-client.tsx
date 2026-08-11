@@ -3,8 +3,12 @@
 import { useMemo, useRef, useState } from 'react';
 import { INTENT_LABELS } from '@/lib/clusters';
 
-const YEAR_ONE = 727;
-const ONGOING = 228;
+// $499 once for the touchscreen terminal, then $19.99/month for EACH handheld
+// scanner. These totals assume one scanner, which is the common case.
+const TERMINAL_ONCE = 499;
+const SCANNER_MONTHLY = 19.99;
+const YEAR_ONE = Math.round(TERMINAL_ONCE + SCANNER_MONTHLY * 12);
+const ONGOING = Math.round(SCANNER_MONTHLY * 12);
 const CARD_RATE = 0.029;
 
 type Props = {
