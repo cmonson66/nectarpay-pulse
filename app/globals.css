@@ -86,6 +86,21 @@ body {
   margin: 9px 0 0;
 }
 
+/* CryptoPop teaser. Sits below the math on purpose. */
+.pop { border-color: rgba(242,167,27,.28); }
+.popLede { font-size: 15px; color: rgba(248,244,234,.82); margin: 0 0 14px; }
+.popRow { display: flex; flex-wrap: wrap; gap: 7px; margin: 0 0 12px; }
+.popPin {
+  font-family: var(--font-display), sans-serif;
+  font-size: 12px; font-weight: 700;
+  background: var(--cream); color: var(--ink);
+  border-radius: 999px; padding: 5px 11px;
+}
+.popPin.dark {
+  background: var(--honey); color: var(--navy);
+  box-shadow: 0 0 0 3px rgba(242,167,27,.2);
+}
+
 .intentRow { display: flex; flex-wrap: wrap; gap: 8px; }
 .chip {
   font-family: var(--font-display), sans-serif;

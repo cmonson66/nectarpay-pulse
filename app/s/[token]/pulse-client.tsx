@@ -308,6 +308,30 @@ export function PulseClient(props: Props) {
         </section>
       )}
 
+      {/* ---------------- CRYPTOPOP ---------------- */}
+      {/* Deliberately below the math. The fee savings are provable today;
+          this is not yet. Leading with it would trade a strong argument for
+          a speculative one and invite "call me when it is live". */}
+      <section className="card pop">
+        <p className="cardKicker">Coming next</p>
+        <h2 className="cardTitle">The part a card reader cannot do</h2>
+        <p className="popLede">
+          CryptoPop is a map NectarPay is building, showing people who pay in crypto which
+          businesses near them accept it and what each one is running that week. When it
+          launches, merchants taking crypto get listed.
+        </p>
+        <div className="popRow">
+          <span className="popPin">10% back</span>
+          <span className="popPin">$5 off</span>
+          <span className="popPin dark">{props.businessName}</span>
+          <span className="popPin">8% back</span>
+        </div>
+        <p className="fine">
+          CryptoPop is in development and has no launch date yet, so nothing here is a promise
+          of a listing. The terminal pays for itself on the fees above either way.
+        </p>
+      </section>
+
       {/* ---------------- EXITS ---------------- */}
       <section className="exits">
         <div className="card exit">
