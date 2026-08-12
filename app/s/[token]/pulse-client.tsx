@@ -320,12 +320,48 @@ export function PulseClient(props: Props) {
           businesses near them accept it and what each one is running that week. When it
           launches, merchants taking crypto get listed.
         </p>
-        <div className="popRow">
-          <span className="popPin">10% back</span>
-          <span className="popPin">$5 off</span>
-          <span className="popPin dark">{props.businessName}</span>
-          <span className="popPin">8% back</span>
+
+        <div className="popMap" role="img" aria-label={`Preview of the CryptoPop map with ${props.businessName} listed among nearby businesses`}>
+          <svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <rect width="320" height="200" fill="#eef0f2" />
+            <g fill="#e6e2d8">
+              <rect x="16" y="12" width="86" height="46" />
+              <rect x="196" y="18" width="104" height="40" />
+              <rect x="24" y="140" width="78" height="48" />
+              <rect x="200" y="136" width="100" height="52" />
+            </g>
+            <g fill="#cfe4cd">
+              <rect x="128" y="150" width="52" height="38" rx="3" />
+              <rect x="126" y="10" width="46" height="34" rx="3" />
+            </g>
+            <g stroke="#d8dbde" strokeWidth="13">
+              <path d="M-6 72 H326" /><path d="M-6 132 H326" />
+              <path d="M112 -6 V206" /><path d="M188 -6 V206" />
+            </g>
+            <g stroke="#ffffff" strokeWidth="9">
+              <path d="M-6 72 H326" /><path d="M-6 132 H326" />
+              <path d="M112 -6 V206" /><path d="M188 -6 V206" />
+            </g>
+            <g stroke="#ffffff" strokeWidth="4">
+              <path d="M-6 102 H326" /><path d="M256 -6 V206" />
+            </g>
+          </svg>
+
+          <span className="popPin" style={{ left: '19%', top: '30%' }}>
+            <i style={{ background: '#3b7dc4' }}>&#9749;</i>8% back
+          </span>
+          <span className="popPin" style={{ left: '76%', top: '27%' }}>
+            <i style={{ background: '#2f7d4f' }}>&#127860;</i>10% back
+          </span>
+          <span className="popPin" style={{ left: '22%', top: '84%' }}>
+            <i style={{ background: '#c2761b' }}>&#128135;</i>$5 off
+          </span>
+          <span className="popPin mine" style={{ left: '54%', top: '62%' }}>
+            <i>&#9733;</i><span>{props.businessName}</span>
+          </span>
+          <span className="popDot" style={{ left: '54%', top: '66%' }} />
         </div>
+
         <p className="fine">
           CryptoPop is in development and has no launch date yet, so nothing here is a promise
           of a listing. The terminal pays for itself on the fees above either way.

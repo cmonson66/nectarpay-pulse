@@ -86,19 +86,60 @@ body {
   margin: 9px 0 0;
 }
 
-/* CryptoPop teaser. Sits below the math on purpose. */
-.pop { border-color: rgba(242,167,27,.28); }
-.popLede { font-size: 15px; color: rgba(248,244,234,.82); margin: 0 0 14px; }
-.popRow { display: flex; flex-wrap: wrap; gap: 7px; margin: 0 0 12px; }
-.popPin {
-  font-family: var(--font-display), sans-serif;
-  font-size: 12px; font-weight: 700;
-  background: var(--cream); color: var(--ink);
-  border-radius: 999px; padding: 5px 11px;
+/* CryptoPop teaser. Sits below the math on purpose.
+   .card carries no width of its own - siblings pair it with a width class
+   like .napkin, and omitting that is what made this span edge to edge. */
+.pop {
+  max-width: 640px;
+  margin: 26px auto 0;
+  border: 1px solid rgba(242, 167, 27, .3);
 }
-.popPin.dark {
-  background: var(--honey); color: var(--navy);
-  box-shadow: 0 0 0 3px rgba(242,167,27,.2);
+.popLede { font-size: 15px; color: var(--ink-soft); margin: 0 0 14px; }
+
+/* the map itself, scaled down from the CryptoPop preview */
+.popMap {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 16 / 10;
+  background: #eef0f2;
+  border: 1px solid rgba(12, 26, 44, .12);
+}
+.popMap svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.popPin {
+  position: absolute;
+  transform: translate(-50%, -100%);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: #fff;
+  border-radius: 999px;
+  padding: 3px 9px 3px 3px;
+  box-shadow: 0 2px 6px rgba(16, 24, 40, .26);
+  white-space: nowrap;
+  font-family: var(--font-display), sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #111827;
+}
+.popPin i {
+  width: 18px; height: 18px; border-radius: 999px;
+  display: grid; place-items: center; font-style: normal; font-size: 9px; color: #fff;
+}
+.popPin.mine {
+  background: var(--navy); color: #fff; padding-right: 11px;
+  /* a long shop name would otherwise run off the map */
+  max-width: 52%;
+}
+.popPin.mine span {
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.popPin.mine i { background: var(--honey); color: var(--navy); }
+.popDot {
+  position: absolute; width: 11px; height: 11px; border-radius: 999px;
+  background: #2563eb; border: 2px solid #fff;
+  box-shadow: 0 0 0 5px rgba(37, 99, 235, .22);
+  transform: translate(-50%, -50%);
 }
 
 .intentRow { display: flex; flex-wrap: wrap; gap: 8px; }
