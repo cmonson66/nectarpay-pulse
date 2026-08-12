@@ -321,45 +321,65 @@ export function PulseClient(props: Props) {
           launches, merchants taking crypto get listed.
         </p>
 
-        <div className="popMap" role="img" aria-label={`Preview of the CryptoPop map with ${props.businessName} listed among nearby businesses`}>
-          <svg viewBox="0 0 320 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-            <rect width="320" height="200" fill="#eef0f2" />
-            <g fill="#e6e2d8">
-              <rect x="16" y="12" width="86" height="46" />
-              <rect x="196" y="18" width="104" height="40" />
-              <rect x="24" y="140" width="78" height="48" />
-              <rect x="200" y="136" width="100" height="52" />
-            </g>
-            <g fill="#cfe4cd">
-              <rect x="128" y="150" width="52" height="38" rx="3" />
-              <rect x="126" y="10" width="46" height="34" rx="3" />
-            </g>
-            <g stroke="#d8dbde" strokeWidth="13">
-              <path d="M-6 72 H326" /><path d="M-6 132 H326" />
-              <path d="M112 -6 V206" /><path d="M188 -6 V206" />
-            </g>
-            <g stroke="#ffffff" strokeWidth="9">
-              <path d="M-6 72 H326" /><path d="M-6 132 H326" />
-              <path d="M112 -6 V206" /><path d="M188 -6 V206" />
-            </g>
-            <g stroke="#ffffff" strokeWidth="4">
-              <path d="M-6 102 H326" /><path d="M256 -6 V206" />
-            </g>
-          </svg>
+        <div className="popPhone" role="img" aria-label={`Preview of the CryptoPop app with ${props.businessName} listed among nearby businesses`}>
+          <div className="popScreen">
+            <div className="popBar"><span>5:11</span><span>{props.city || 'Nearby'}</span></div>
+            <div className="popApp">Crypto<b>Pop</b></div>
+            <div className="popTabs">
+              <span className="on">All</span><span>Coffee</span><span>Food</span>
+              <span>Retail</span><span>Services</span>
+            </div>
 
-          <span className="popPin" style={{ left: '19%', top: '30%' }}>
-            <i style={{ background: '#3b7dc4' }}>&#9749;</i>8% back
-          </span>
-          <span className="popPin" style={{ left: '76%', top: '27%' }}>
-            <i style={{ background: '#2f7d4f' }}>&#127860;</i>10% back
-          </span>
-          <span className="popPin" style={{ left: '22%', top: '84%' }}>
-            <i style={{ background: '#c2761b' }}>&#128135;</i>$5 off
-          </span>
-          <span className="popPin mine" style={{ left: '54%', top: '62%' }}>
-            <i>&#9733;</i><span>{props.businessName}</span>
-          </span>
-          <span className="popDot" style={{ left: '54%', top: '66%' }} />
+            <div className="popMap">
+              <svg viewBox="0 0 264 208" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                <rect width="264" height="208" fill="#eef0f2" />
+                <g fill="#e6e2d8">
+                  <rect x="14" y="10" width="74" height="42" />
+                  <rect x="164" y="14" width="88" height="38" />
+                  <rect x="18" y="146" width="70" height="46" />
+                  <rect x="168" y="142" width="86" height="50" />
+                </g>
+                <g fill="#cfe4cd">
+                  <rect x="106" y="152" width="46" height="36" rx="3" />
+                  <rect x="104" y="8" width="42" height="30" rx="3" />
+                </g>
+                <g stroke="#d8dbde" strokeWidth="12">
+                  <path d="M-6 66 H270" /><path d="M-6 128 H270" />
+                  <path d="M94 -6 V214" /><path d="M158 -6 V214" />
+                </g>
+                <g stroke="#ffffff" strokeWidth="8">
+                  <path d="M-6 66 H270" /><path d="M-6 128 H270" />
+                  <path d="M94 -6 V214" /><path d="M158 -6 V214" />
+                </g>
+                <g stroke="#ffffff" strokeWidth="3.5">
+                  <path d="M-6 98 H270" /><path d="M216 -6 V214" />
+                </g>
+              </svg>
+
+              <span className="popPin" style={{ left: '20%', top: '26%' }}>
+                <i style={{ background: '#3b7dc4' }}>&#9749;</i>8% back
+              </span>
+              <span className="popPin" style={{ left: '77%', top: '23%' }}>
+                <i style={{ background: '#2f7d4f' }}>&#127860;</i>10% back
+              </span>
+              <span className="popPin" style={{ left: '24%', top: '86%' }}>
+                <i style={{ background: '#c2761b' }}>&#128135;</i>$5 off
+              </span>
+              <span className="popPin mine" style={{ left: '55%', top: '58%' }}>
+                <i>&#9733;</i>Your shop
+              </span>
+              <span className="popDot" style={{ left: '55%', top: '64%' }} />
+
+              <div className="popCard">
+                <div className="popLogo">{(props.businessName || 'Y').trim().charAt(0).toUpperCase()}</div>
+                <div className="popCardText">
+                  <div className="popName">{props.businessName}</div>
+                  <div className="popMeta">{props.city ? `${props.city} · open now` : 'Open now'}</div>
+                  <div className="popOffer">Your special goes here</div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <p className="fine">
