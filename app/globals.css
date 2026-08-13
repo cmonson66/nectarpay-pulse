@@ -210,10 +210,26 @@ body {
   color: var(--navy);
   font-weight: 700;
 }
+/* A chip the merchant actually TAPPED, as opposed to one pre-highlighted
+   because the email link carried that intent. Without the distinction a tap
+   produced no visible change and people tapped again, and again. */
+.chipTapped {
+  box-shadow: 0 0 0 3px rgba(242, 167, 27, 0.28);
+  animation: chipPop 0.28s ease-out;
+}
+@keyframes chipPop {
+  0% { transform: scale(0.94); }
+  60% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chipTapped { animation: none; }
+}
 .chipEcho {
   margin: 12px 0 0;
-  font-size: 13px;
-  color: rgba(242, 167, 27, 0.9);
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--honey);
 }
 
 /* ---------------- CARDS ---------------- */

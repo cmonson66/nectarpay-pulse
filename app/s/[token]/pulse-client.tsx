@@ -82,8 +82,16 @@ export function PulseClient(props: Props) {
     logEvent(token, 'slider', { valueNum: cryptoClamped, valueText: `crypto:${cryptoMode}` });
   };
 
+  // A chip arriving pre-selected from the email link (?i=speed) meant a tap
+  // changed nothing on screen, so one merchant tapped the same chip five
+  // times in two seconds. Log each intent ONCE per visit, and make the tap
+  // visibly land.
+  const loggedIntents = useRef<Set<string>>(new Set());
+
   const tapIntent = (key: string) => {
     setTappedIntent(key);
+    if (loggedIntents.current.has(key)) return;
+    loggedIntents.current.add(key);
     logEvent(token, 'intent', { intent: key });
   };
 
@@ -148,7 +156,14 @@ export function PulseClient(props: Props) {
             <button
               key={key}
               type="button"
-              className={`chip ${tappedIntent === key || (!tappedIntent && props.emailIntent === key) ? 'chipOn' : ''}`}
+              className={`chip ${
+                tappedIntent === key
+                  ? 'chipOn chipTapped'
+                  : !tappedIntent && props.emailIntent === key
+                    ? 'chipOn'
+                    : ''
+              }`}
+              aria-pressed={tappedIntent === key}
               onClick={() => tapIntent(key)}
             >
               {label}
@@ -156,7 +171,10 @@ export function PulseClient(props: Props) {
           ))}
         </div>
         {tappedIntent && (
-          <p className="chipEcho">Noted - {props.repFirst} leads with that if you two ever talk.</p>
+          <p className="chipEcho">
+            <span aria-hidden="true">✓</span> Got it - {props.repFirst} leads with that if you
+            two ever talk.
+          </p>
         )}
       </section>
 
